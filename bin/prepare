@@ -1,0 +1,49 @@
+#!/bin/bash
+# -*- mode: bash; tab-width: 2; -*-
+# vim: ts=2 sw=2 ft=bash noet
+
+# source the Nos framework
+. /opt/nos/common.sh
+
+# initialize Nos with the original arguments
+nos_init "$@"
+
+# source common lib, where the helpers are defined
+. ${engine_lib_dir}/typo3.sh
+
+# install php interpreter
+php_install_runtime
+
+# install php and zend extensions
+php_install_php_extensions
+
+# install apache or nginx
+php_install_webserver
+
+# install composer binary
+php_install_composer
+
+# install nodejs for static assets
+nodejs_install_runtime
+nodejs_npm_rebuild
+nodejs_install_bower
+
+# configure apache or nginx
+php_configure_webserver
+
+# configure php-fpm settings
+php_configure_php_fpm
+
+# configure php.ini and php extensions' ini files
+php_configure_php
+
+## configure the newrelic monitoring agent
+# php_configure_newrelic
+
+# if a composer.json file is present, run composer install
+php_composer_install
+nodejs_bower_install
+
+nodejs_set_runtime
+
+exit 0

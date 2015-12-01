@@ -1,0 +1,12 @@
+name: 'typo3'
+version: '0.1.0'
+summary: 'Nanobox engine for TYPO3'
+language: 'php'
+stability: 'alpha'
+license: 'MPL'
+generic: false
+overlays:
+  - php
+
+authors:
+  - manuel_selbach@yahoo.de

@@ -12,19 +12,18 @@ nos_init "$@"
 . ${engine_lib_dir}/typo3.sh
 
 ## run Boxfile hooks defined in the "before" node
-# nos_run_hooks "before"
+nos_run_hooks "before"
 
-## wordpress build tasks
-# wordpress_generate_salt
-# wordpress_create_wordpress_conf
+## typo3 build tasks
+typo3_create_typo3_conf
 
 ## run Boxfile hooks defined in the "exec" node
-# nos_run_hooks "exec"
+nos_run_hooks "exec"
 
 ## run Boxfile hooks defined in the "after" node
-# nos_run_hooks "after"
+nos_run_hooks "after"
 
 ## copy the source code into the live directory
-# nos_print_bullet "Copying release into live code directory..."
-# rsync -a $(nos_code_dir)/ $(nos_live_dir)
+nos_print_bullet "Copying release into live code directory..."
+rsync -a $(nos_code_dir)/ $(nos_live_dir)
 
